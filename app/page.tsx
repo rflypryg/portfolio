@@ -1,5 +1,5 @@
 'use client';
-import Image from "next/image";
+
 import React, { useState, useEffect } from 'react';
 
 export default function Portfolio() {
@@ -20,6 +20,7 @@ export default function Portfolio() {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
+          // Check if section is approximately in the viewport center/near top
           return rect.top <= 100 && rect.bottom >= 100;
         }
         return false;
@@ -115,12 +116,12 @@ export default function Portfolio() {
   if (!mounted) return null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-black text-white overflow-x-hidden">
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-4000"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-4000"></div>
       </div>
 
       {/* Navbar */}
@@ -238,8 +239,7 @@ export default function Portfolio() {
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl opacity-30 animate-pulse"></div>
               <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-purple-400 shadow-2xl shadow-purple-500/50 hover:scale-105 transition-transform duration-500 cursor-pointer">
                 <div className="w-full h-full bg-cover bg-center flex items-center justify-center"
-                  style={{ backgroundImage: "url('/profile.jpg')", }}>
-                  </div>
+                  style={{ backgroundImage: "url('/profile.jpg')", }}></div>
               </div>
             </div>
           </div>
@@ -253,6 +253,7 @@ export default function Portfolio() {
           </svg>
         </button>
       </section>
+{/* About Section */}
 <section id="about" className="py-20 px-6 relative z-10">
   <div className="max-w-7xl mx-auto">
     <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
@@ -261,114 +262,110 @@ export default function Portfolio() {
     <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
       Mengenal lebih dekat perjalanan karir dan pendidikan saya
     </p>
-    <div className="grid md:grid-cols-2 gap-8">
-      <div className="bg-slate-800/30 backdrop-blur-xl rounded-2xl p-8 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 hover:scale-105 transform group">
-        <div className="flex items-center mb-6">
-          <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl mr-4 group-hover:rotate-12 transition-transform duration-500">
-            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path d="M12 14l9-5-9-5-9 5 9 5z" />
-              <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-              />
-            </svg>
-          </div>
-          <h3 className="text-2xl font-bold">Pendidikan</h3>
-        </div>
 
-        <div className="space-y-6">
-          <div className="border-l-4 border-purple-400 pl-6 pb-6 hover:border-pink-400 transition-colors duration-300">
-            <h4 className="text-xl font-semibold text-purple-300 mb-1">
-              Mahasiswa Teknik Informatika
-            </h4>
-            <p className="text-gray-400 mb-1">Universitas Tarumanagara</p>
-            <p className="text-sm text-gray-500 mb-2">
-              Sedang menempuh pendidikan di bidang teknologi dan pemrograman dengan fokus pada pengembangan perangkat lunak serta sistem informasi modern.
-            </p>
-            <div className="flex justify-between text-sm text-gray-500">
-              <span>📅 2023 - Sekarang</span>
+    <div className="bg-slate-800/30 backdrop-blur-xl rounded-2xl p-8 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 hover:scale-105 transform group max-w-3xl mx-auto">
+      <div className="flex items-center mb-6">
+        <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl mr-4 group-hover:rotate-12 transition-transform duration-500">
+          <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M12 14l9-5-9-5-9 5 9 5z" />
+            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+          </svg>
+        </div>
+        <h3 className="text-2xl font-bold">Pendidikan</h3>
+      </div>
+
+      <div className="border-l-4 border-purple-400 pl-6 pb-2 hover:border-pink-400 transition-colors duration-300">
+        <h4 className="text-xl font-semibold text-purple-300 mb-1">
+          Mahasiswa Teknik Informatika
+        </h4>
+        <p className="text-gray-400 mb-1">Universitas Tarumanagara</p>
+        <p className="text-sm text-gray-500 mb-3">
+          Aktif sebagai mahasiswa yang berfokus pada pengembangan aplikasi berbasis web, algoritma, dan kecerdasan buatan.
+        </p>
+        <div className="flex justify-between text-sm text-gray-500">
+          <span>📅 2024 - Sekarang</span>
+        </div>
+      </div>
+    </div>
+          <div className="mt-12 bg-slate-800/30 backdrop-blur-xl rounded-2xl p-8 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="flex items-start space-x-4 group">
+                <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-lg mb-1">Lokasi</h4>
+                  <p className="text-gray-400">Jakarta, Indonesia</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4 group">
+                <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-lg mb-1">Telepon</h4>
+                  <p className="text-gray-400">+62 812-3456-7890</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4 group">
+                <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-lg mb-1">Email</h4>
+                  <p className="text-gray-400">Rafly@gmail.com</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section id="skills" className="py-20 px-6 bg-gradient-to-b from-purple-900 to-gray-900 text-white">
-  <div className="max-w-7xl mx-auto text-center">
-    <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+      </section>
+
+      {/* Skills Section */}
+<section id="skills" className="py-20 px-6 bg-slate-900/30 relative z-10">
+  <div className="max-w-7xl mx-auto">
+    <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
       Keahlian Saya
     </h2>
-    <p className="text-gray-400 mb-12">
-      Beberapa teknologi dan tools yang saya kuasai
+    <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+      Teknologi dan tools yang saya kuasai untuk membangun aplikasi web modern
     </p>
 
-    <div className="flex flex-wrap justify-center gap-10">
-      {/* Next.js */}
-      <div className="flex flex-col items-center group">
-        <img
-          src="https://skillicons.dev/icons?i=nextjs"
-          alt="Next.js"
-          className="w-20 h-20 group-hover:scale-110 transition-transform duration-300"
-        />
-        <p className="mt-2 text-sm text-gray-400">Next.js</p>
-      </div>
-
-      {/* C++ */}
-      <div className="flex flex-col items-center group">
-        <img
-          src="https://skillicons.dev/icons?i=cpp"
-          alt="C++"
-          className="w-20 h-20 group-hover:scale-110 transition-transform duration-300"
-        />
-        <p className="mt-2 text-sm text-gray-400">C++</p>
-      </div>
-
-      {/* Python */}
-      <div className="flex flex-col items-center group">
-        <img
-          src="https://skillicons.dev/icons?i=python"
-          alt="Python"
-          className="w-20 h-20 group-hover:scale-110 transition-transform duration-300"
-        />
-        <p className="mt-2 text-sm text-gray-400">Python</p>
-      </div>
-
-      {/* Java */}
-      <div className="flex flex-col items-center group">
-        <img
-          src="https://skillicons.dev/icons?i=java"
-          alt="Java"
-          className="w-20 h-20 group-hover:scale-110 transition-transform duration-300"
-        />
-        <p className="mt-2 text-sm text-gray-400">Java</p>
-      </div>
-
-      {/* Oracle */}
-      <div className="flex flex-col items-center group">
-        <img
-          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg"
-          alt="Oracle"
-          className="w-20 h-20 group-hover:scale-110 transition-transform duration-300"
-        />
-        <p className="mt-2 text-sm text-gray-400">Oracle</p>
-      </div>
-
-      {/* MATLAB */}
-      <div className="flex flex-col items-center group">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png"
-          alt="MATLAB"
-          className="w-20 h-20 group-hover:scale-110 transition-transform duration-300"
-        />
-        <p className="mt-2 text-sm text-gray-400">MATLAB</p>
-      </div>
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8 justify-items-center">
+      {[
+        { name: "Next.js", logo: "https://skillicons.dev/icons?i=nextjs" },
+        { name: "C++", logo: "https://skillicons.dev/icons?i=cpp" },
+        { name: "Python", logo: "https://skillicons.dev/icons?i=python" },
+        { name: "Java", logo: "https://skillicons.dev/icons?i=java" },
+        { name: "Oracle", logo: "https://skillicons.dev/icons?i=oracle" },
+        { name: "MATLAB", logo: "https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" },
+      ].map((skill, index) => (
+        <div
+          key={index}
+          className="flex flex-col items-center group transition-transform hover:scale-110"
+        >
+          <img
+            src={skill.logo}
+            alt={skill.name}
+            className="w-16 h-16 object-contain mb-2 drop-shadow-lg"
+          />
+          <span className="text-sm text-gray-300 group-hover:text-purple-300 transition-colors">
+            {skill.name}
+          </span>
+        </div>
+      ))}
     </div>
   </div>
 </section>
+
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-6 bg-slate-900/30 relative z-10">
